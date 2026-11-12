@@ -1,0 +1,93 @@
+
+import { useState } from "react";
+import { loginWithEmail } from "./authService";
+
+const LoginForm = () => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+
+    try {
+      await loginWithEmail(email, password);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Tuntematon virhe");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "15px"
+      }}
+    >
+      <h1>Koodinimigeneraattori</h1>
+      <h2>Kirjaudu sisään</h2>
+
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px",
+          width: "300px"
+        }}
+      >
+        <label htmlFor="email" style={{ width: "100px" }}>
+          Sähköposti:
+        </label>
+        <input
+          id="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px",
+          width: "300px"
+        }}
+      >
+        <label htmlFor="password" style={{ width: "100px" }}>
+          Salasana:
+        </label>
+        <input
+          id="password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </div>
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
+      <button type="submit" disabled={loading}>
+        {loading ? "Kirjaudutaan..." : "Kirjaudu"}
+      </button>
+    </form>
+  );
+};
+
+export default LoginForm;
