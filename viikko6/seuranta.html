@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloudflare Web Analyticsin hyödyntäminen</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        background-color: #ffffff;
+        color: #242424;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+      }
+
+      main {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        line-height: 1.2;
+      }
+
+      a {
+        display: inline-block;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <h1>Cloudflare Web Analyticsin hyödyntäminen</h1>
+
+      <p>
+        Cloudflare Web Analyticsin avulla voidaan seurata, miten kävijät
+        käyttävät verkkosivustoa. Analytiikasta nähdään käyntien ja
+        sivulatausten määrä, suosituimmat sivut sekä se, mistä kävijät ovat
+        saapuneet sivustolle. JavaScript-beacon kerää sivuston käyttöön
+        liittyviä tietoja ja lähettää ne Cloudflarelle. Seurantatietoja voidaan hyödyntää 
+        verkkosivuston sisällön, toimivuuden ja käytettävyyden kehittämisessä.
+      </p>
+
+      <p>
+        Hintavisasovelluksessa analytiikan avulla voitaisiin seurata, kuinka
+        usein sovellusta käytetään ja millaisilla laitteilla sivustolla
+        vieraillaan. Näiden tietojen perusteella käyttöliittymää voitaisiin
+        kehittää toimivammaksi eri laitteilla.
+      </p>
+
+      <p>
+        CORS on selaimen suojausominaisuus, joka voi estää verkkosivustojen
+        välisiä yhteyksiä turvallisuussyistä. Ongelma voi syntyä, kun
+        verkkosivusto yrittää hakea tietoja toisesta palvelusta, mutta selain
+        estää yhteyden. Ongelman välttämiseksi pitää varmistaa, että tarvittavat
+        yhteydet on sallittu ja palvelimen asetukset ovat oikein.
+      </p>
+
+      <p>
+        Cloudflare Web Analyticsiin määritetyn sivuston osoitteen pitää vastata
+        julkaistun sivuston osoitetta. Jos sivustolla käytetään Content Security
+        Policy -asetuksia, niissä pitää sallia Cloudflaren analytiikkaskripti ja
+        sen tarvitsemat yhteydet.
+      </p>
+
+      <a href="./">Takaisin hintavisaan</a>
+    </main>
+  </body>
+</html>
